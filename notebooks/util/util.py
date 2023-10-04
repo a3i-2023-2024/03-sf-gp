@@ -94,6 +94,7 @@ def plot_series(data, labels=None,
         plt.scatter(predictions.values, data.loc[predictions],
                     color=prediction_color, alpha=.4, zorder=3,
                     s=5)
+    plt.grid(':')
     plt.tight_layout()
 
 
@@ -129,6 +130,7 @@ def plot_gp(target=None, pred=None, std=None, samples=None,
         plt.scatter(x, y,
                 color='black', label='target', s=5)
     plt.legend()
+    plt.grid(':')
     plt.tight_layout()
 
 
@@ -151,6 +153,7 @@ def plot_distribution_2D(f, xr, yr, figsize=None):
     yticks = np.linspace(0, len(yr), 6)
     ylabels = np.linspace(yr[0], yr[-1], 6)
     plt.yticks(yticks, ylabels)
+    plt.grid(':')
 
 
 def plot_bars(data, figsize=None, generate_x=False):
@@ -162,3 +165,4 @@ def plot_bars(data, figsize=None, generate_x=False):
     plt.bar(x, data, width=0.7)
     plt.xticks(x[::10], data.index[::10])
     plt.tight_layout()
+    plt.grid(':')
