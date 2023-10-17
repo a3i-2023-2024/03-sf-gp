@@ -46,15 +46,17 @@ def plot_series(data, labels=None,
                     figsize=None,
                     show_sampling_points=False,
                     show_markers=False,
-                    filled_version=None):
+                    filled_version=None,
+                    use_steps=False):
     # Open a new figure
     plt.figure(figsize=figsize)
     # Plot data
+    drawstyle = 'default' if not use_steps else 'steps-mid'
     if not show_markers:
-        plt.plot(data.index, data.values, zorder=0)
+        plt.plot(data.index, data.values, zorder=0, drawstyle=drawstyle)
     else:
         plt.plot(data.index, data.values, zorder=0,
-                marker='.', markersize=3)
+                marker='.', markersize=3, drawstyle=drawstyle)
     if filled_version is not None:
         filled = filled_version.copy()
         filled[~data['value'].isnull()] = np.nan
